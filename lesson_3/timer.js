@@ -8,6 +8,7 @@ class Timer extends EventEmitter {
         this.#duration = duration
     }
     start() {
+        this.emit("timer-start", reminder)
         console.log("Timer started...")
         let reminder = this.#duration
         const startTime = Date.now()
@@ -17,7 +18,7 @@ class Timer extends EventEmitter {
             if (this.#duration - seconds < reminder) {
                 reminder = this.#duration - seconds
                 console.log(`Remaining: ${reminder} seconds`)
-                this.emit("timer-start", reminder)
+                
             }
             if (reminder <= 0) {
                 console.log("Timer ended...")
