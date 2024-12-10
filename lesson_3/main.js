@@ -1,0 +1,6 @@
+const { time } = require("console")
+const Timer = require("./timer")
+const timer = new Timer(5)
+timer.start()
+timer.emit("timer-start")
+timer.emit("timer-end")
