@@ -47,4 +47,20 @@ fs.readSync(opened, newBff, 0, newBff.length, middle)
 console.log(data)
 console.log(`File Length: ${data.length} bytes`)
 console.log(`Middle: ${middle}`)
-console.log(`Data from middle: ${newBff.toString("utf-8")}`)
+console.log(`Data from middle: ${newBff.toString("utf-8")}`) 
+fs.closeSync("data.txt")
+
+//Task 6: Merge Multiple Files
+const file1 = fs.writeFileSync("file1.txt", "Content of the first file.\n")
+const file2 = fs.writeFileSync("file2.txt", "Content of the second file.\n")
+
+const data1 = fs.readFileSync("file1.txt",
+    { encoding: 'utf8', flag: 'r' })
+const data2 = fs.readFileSync("file2.txt", 
+    { encoding:"utf-8", flag:"r"}
+)
+fs.appendFileSync("merged.txt", data1)
+fs.appendFileSync("merged.txt", data2)
+fs.closeSync("file1.txt")
+fs.closeSync("file2.txt")
+fs.closeSync("merged.txt")
