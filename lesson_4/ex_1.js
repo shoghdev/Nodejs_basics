@@ -23,7 +23,7 @@ let bytesRead
 do {
     bytesRead = fs.readSync(sourceFile, buffer, 0, buffer.length, null)
     if (bytesRead > 0) {
-        fs.writeSync(destinationFile, buffer, 0, bytesRead)
+        fs.writeSync(destinationFile, newBuffer, 0, bytesRead)
     }
 } while(bytesRead > 0)
 console.log(newBuffer)
