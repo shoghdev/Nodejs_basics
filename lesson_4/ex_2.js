@@ -53,7 +53,6 @@ fs.closeSync("data.txt")
 //Task 6: Merge Multiple Files
 const file1 = fs.writeFileSync("file1.txt", "Content of the first file.\n")
 const file2 = fs.writeFileSync("file2.txt", "Content of the second file.\n")
-
 const data1 = fs.readFileSync("file1.txt",
     { encoding: 'utf8', flag: 'r' })
 const data2 = fs.readFileSync("file2.txt", 
@@ -64,3 +63,10 @@ fs.appendFileSync("merged.txt", data2)
 fs.closeSync("file1.txt")
 fs.closeSync("file2.txt")
 fs.closeSync("merged.txt")
+
+//Task 7: Insert Content into the Middle of a File
+fs.writeFileSync("message.txt", "Hello world!!!!", { flag: "w" })
+const file3 = fs.readFileSync("message.txt", "utf-8")
+const modified = file3.replace("Hello", "Hello Awesome")
+fs.writeFileSync("message.txt", modified)
+fs.closeSync(file)
