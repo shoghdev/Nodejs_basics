@@ -36,3 +36,15 @@ const buffer_4 = new Buffer("AB")
 fs.writeSync(newFile, buffer_4, 0, buffer_4.length, 5)
 fs.closeSync(newFile)
 
+//Task 5: File Length and Seek
+const opened = fs.openSync("data.txt", "r")
+const data = fs.readFileSync('data.txt',
+    { encoding: 'utf8', flag: 'r' })
+const added = Buffer.from(data)
+const newBff = Buffer.alloc(10)
+const middle = fs.readSync(opened, added, 0, added.length, added.length / 2)
+fs.readSync(opened, newBff, 0, newBff.length, middle)
+console.log(data)
+console.log(`File Length: ${data.length} bytes`)
+console.log(`Middle: ${middle}`)
+console.log(`Data from middle: ${newBff.toString("utf-8")}`)
