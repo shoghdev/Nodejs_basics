@@ -1,5 +1,6 @@
 const fs = require("node:fs")
 const { Buffer } = require('node:buffer')
+const { buffer } = require("stream/consumers")
 
 //Task 1: Create and Write Data to a File
 const file = fs.openSync("data.txt", "w")
@@ -25,5 +26,13 @@ do {
         fs.writeSync(destinationFile, buffer, 0, bytesForRead)
     }
 } while (bytesForRead > 0)
-console.log(newBuffer)
+console.log(sourceFile, destinationFile)
 fs.closeSync(sourceFile, destinationFile)
+
+//Task 4: Implement a Simple File Cursor
+const newFile = fs.openSync("example.txt", 'w+')
+fs.writeSync(newFile, "0123456789")
+const buffer_4 = new Buffer("AB")
+fs.writeSync(newFile, buffer_4, 0, buffer_4.length, 5)
+fs.closeSync(newFile)
+
